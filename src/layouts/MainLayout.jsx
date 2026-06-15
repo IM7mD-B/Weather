@@ -1,10 +1,9 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import Logo from '../assets/images/logo.svg'
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 const MainLayout = ({ children }) => {
-    // هنا نحدد عناصر القائمة في الهيدر
     const menuItems = [
         { key: '1', label: 'الرئيسية' },
         { key: '2', label: 'الطقس' },
@@ -13,9 +12,9 @@ const MainLayout = ({ children }) => {
 
     return (
         <Layout className="min-h-screen">
-            {/* 1. الهيدر الثابت في الأعلى */}
-            <Header className="flex items-center justify-between bg-white dark:bg-[#282a2e] px-6 shadow-sm">
-                <img src={Logo} alt="" />
+            {/* 1. الهيدر: شلنا bg-white والـ dark bg تماماً */}
+            <Header className="flex items-center justify-between my-3 px-6 shadow-sm">
+                <img src={Logo} alt="Logo" className='size-42' />
                 {/* <Menu
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
@@ -24,17 +23,13 @@ const MainLayout = ({ children }) => {
                 /> */}
             </Header>
 
-            {/* 2. المحتوى المتغير (الصفحات مثل الطقس وغيره) */}
-            <Content className="p-6 bg-gray-50 dark:bg-[#37373d]">
-                <div className="bg-white dark:bg-[#282a2e] p-6 rounded-lg min-h-[80vh] shadow-sm">
-                    {children} {/* هنا ستظهر صفحة Weather تلقائياً */}
+            {/* 2. المحتوى: شلنا bg-gray-50 والـ dark bg */}
+            <Content className="py-6">
+                {/* الصندوق الداخلي للمحتوى */}
+                <div className="px-8 md:px-16 min-h-[85vh] shadow-sm transition-colors duration-300">
+                    {children}
                 </div>
             </Content>
-
-            {/* 3. الفوتر الثابت في الأسفل (اختياري) */}
-            <Footer className="text-center bg-gray-100 dark:bg-[#282a2e] text-gray-500">
-                جميع الحقوق محفوظة © 2026
-            </Footer>
         </Layout>
     );
 };
